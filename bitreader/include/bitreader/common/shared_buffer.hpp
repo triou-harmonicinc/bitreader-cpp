@@ -52,6 +52,7 @@ namespace brcpp
             uint8_t* data = nullptr;
             size_t capacity = 0;
             size_t size = 0;
+            ~_internal() { delete[] data; }
         };
 
         //----------------------------------------------------------------------

@@ -97,16 +97,7 @@ shared_buffer::operator bool() const
 std::shared_ptr<shared_buffer::_internal> shared_buffer::make_internal(
         _internal state)
 {
-    std::shared_ptr<_internal> ret(
-            new _internal(state),
-            [](_internal* ptr) {
-                delete[] ptr->data;
-                ptr->size = 0;
-                ptr->capacity = 0;
-            }
-    );
-
-    return ret;
+    return std::make_shared<shared_buffer::_internal>(state);
 }
 
 //----------------------------------------------------------------------
